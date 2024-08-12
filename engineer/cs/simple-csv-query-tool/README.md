@@ -1,8 +1,6 @@
 # Building the `exql` CSV Data Query Tool
 
-## Introduction
-
-Greetings, collaborators ! Welcome to an engaging programming challenge that will introduce you to the creation of a program capable of querying data from CSV files using the SQL query language. This task will not only enhance your programming skills but also provide insights into structured data manipulation.
+Your task in this challenge is creating a tool to manipulate CSV data by using a simple SQL-like language.
 
 ## Key Concepts
 
@@ -27,60 +25,38 @@ To make it easier, we can assume that CSV files is always a table `M`x`N + 1`, w
 |---|---|---|--|--|
 | #1 | Vinh | Nguyen Phuc | 22 | Computer Science |
 | #2 | Quan | Nguyen Hong | 20 | Computer Engineering |
-| #1 | Phu  | Nguyen Ngoc | 20 | Mechanical Engineering |
+| #3 | Phu  | Nguyen Ngoc | 20 | Mechanical Engineering |
 
 ## Requirements
 
 Your program should have these components:
 
-- **Command-line interface**: The program should be run from the command line, accepting the CSV file name and SQL-like query as parameters.
-- **Query parsing**: Implement a mechanism to parse the provided query parameter. The program should understand basic SQL-like syntax, including `SELECT`/`INSERT` statements. `DELETE`/`UPDATE` statements are not required.
+- **Interactive shell**: User can enter queries to manipulate CSV data.
+- **Query parser**: Translate SQL-like query strings into helpful information. The program should understand basic SQL-like syntax, including `SELECT`, `INSERT`, `DELETE`, `UPDATE` statements.
 - **CSV Reading**: Design the program to read and interpret CSV files. Assume that the CSV files are properly formatted and include header rows.
-- **Query Execution**: Process the query and retrieve appropriate data from the CSV file.
 
 The executable file `exql` must be:
 
 - Run and compiled on Linux operating system
-- Use C++ standard 17
+- Use C++ >= 17
 - NO MEMORY LEAKS after program exit
-- Pass all test cases
 
 The language description is at [here](./query-language-description.md).
 
 ## Learning Objectives
 
-Through this challenge, you will:
-
 - Learn the fundamentals of SQL and its application for data querying.
 - Enhance your programming skills by building a data manipulation tool.
 - Gain practical experience with I/O operations for reading and processing CSV files.
-- This assignment is designed to gradually introduce you to these concepts. If you are new to SQL or databases, don't worry - you'll have access to various resources and guidance to help you successfully complete the task.
-
-Furthermore, you will have ideas with:
-
-- The difference between high level programming languages (`C#`, `Java`, `Javascript`, `Python` ...) and low level ones (`C/C++`, `Rust` ...)
-- How computers understand programming/scripting languages
-
 
 ## Timelines
 
-The challenge will last for 8 weeks but may extend or conclude sooner based on your ability.
-
-- [Week 1](./timelines/week1.md): Set up working environment and find out more about this challenges
-- [Week 2](./timelines/week2.md): Introduce to CLI, query validating & query parsing
-- [Week 3 & Week 4](./timelines/week3_n_week4.md): Construct a query tree
-- [Week 5](./timelines/week5.md): Comming soon ...
-- [Week 6](./timelines/week6.md): Comming soon ...
-
-
-> You should report your work in each week by a document (can be [Notion](https://www.notion.so/) notes, markdown, PDF or MS Word files ...).
-
-Feel free to raise any questions in **Discord**. Best of luck, and enjoy building your `exql` CSV data query tool!
+The challenge will last for 6 weeks but may extend or conclude sooner based on your ability. You should report your work in each week by a document (can be [Notion](https://www.notion.so/) notes, markdown, PDF or MS Word files ...).
 
 ## Documents / Keywords
 
 - Learn CPP: <https://www.learncpp.com/>
 - CPP Roadmap for developers (advanced): <https://roadmap.sh/cpp>
-- RAII 
+- RAII
 - Rule of zero, rules of three, rules of five
 - Cpp Core Guidelines: <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#main>
