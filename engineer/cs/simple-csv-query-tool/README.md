@@ -41,8 +41,6 @@ The executable file `exql` must be:
 - Use C++ >= 17
 - NO MEMORY LEAKS after program exit
 
-The language description is at [here](./query-language-description.md).
-
 ## Learning Objectives
 
 - Learn the fundamentals of SQL and its application for data querying.
