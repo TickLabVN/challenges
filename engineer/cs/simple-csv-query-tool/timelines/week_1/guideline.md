@@ -40,10 +40,11 @@ The SQL Lexer is responsible for breaking down SQL queries (stream of characters
     - Data Manipulation Language (DML): insert, update, delete.
     - Data Query Language (DQL): select.
     - Data Definition Language (DDL): create, drop.
+    - Boolean values: TRUE, FALSE.
     
     ***<ins>Note</ins>***: The implementation will not include support for foreign keys, transactions, nested queries, joins, or database creation.
   - **Identifiers**: Names of columns, tables.
-  - **Literals**: Values like strings, numbers and boolean values (TRUE, FALSE).
+  - **Literals**: Values like strings, numbers.
   - **Operators**: Symbols such as `=`, `!=`, `<`, `>`, `+`, `-`, `*`, `/`,...
   - **Separators**: Characters like commas `,`, semicolons `;`, parentheses `(` and `)`.
   - **Whitespace**: Spaces, tabs, and newlines that separate tokens.
@@ -65,10 +66,6 @@ The SQL Lexer is responsible for breaking down SQL queries (stream of characters
 
     Token tokenizeNumber(){
       // Logic to tokenize number literals
-    }
-
-    Token tokenizeBoolean() {
-      // Logic to tokenize boolean literals
     }
     ```
   - **Operators and Separators:**:
