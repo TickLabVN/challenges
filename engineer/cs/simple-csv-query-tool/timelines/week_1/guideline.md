@@ -100,4 +100,4 @@ The SQL Lexer is responsible for breaking down SQL queries (stream of characters
     ```
 4. **Testing**:
 
-     Test the lexer with various SQL queries to ensure it correctly identifies and processes tokens. Please check some testcases in 
+     Test the lexer with various SQL queries to ensure it correctly identifies and processes tokens. Please check some testcases in [sample testcase](testcase.md).
