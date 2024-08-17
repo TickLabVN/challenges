@@ -271,4 +271,72 @@ Ok({
 })
 ```
 
-### 9.
+### 9. Tokenize Incorrect NEQ Operator
+
+```sql
+SELECT * FROM table WHERE column ! other
+```
+
+```cpp
+Err({
+    ErrorKind::UnexpectedWhileParsingOperator(' ', Token::Neq),
+    Location{1, 35},
+    "SELECT * FROM table WHERE column ! other"
+})
+```
+
+### 10. Tokenize Unclosed NEQ Operator
+
+```sql
+SELECT * FROM table WHERE column !
+```
+
+```cpp
+Err({
+    ErrorKind::OperatorNotClosed(Token::Neq),
+    Location{1, 35},
+    "SELECT * FROM table WHERE column !"
+})
+```
+
+### 11. Tokenize Unclosed Double-Quoted String
+
+```sql
+SELECT * FROM table WHERE string = "not closed
+```
+
+```cpp
+Err({
+    ErrorKind::StringNotClosed,
+    Location{1, 47},
+    "SELECT * FROM table WHERE string = \"not closed"
+})
+```
+
+### 12. Tokenize Unclosed Single-Quoted String
+
+```sql
+SELECT * FROM table WHERE string = 'not closed
+```
+
+```cpp
+Err({
+    ErrorKind::StringNotClosed,
+    Location{1, 47},
+    "SELECT * FROM table WHERE string = \'not closed"
+})
+```
+
+### 13. Tokenize Unsupported Token
+
+```sql
+SELECT * FROM ^ WHERE unsupported = 1;
+```
+
+```cpp
+Err({
+    ErrorKind::UnexpectedOrUnsupportedToken('^'),
+    Location{1, 15},
+    "SELECT * FROM table WHERE ^ unsupported = 1;"
+})
+```
