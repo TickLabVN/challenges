@@ -27,6 +27,16 @@ For the first week you'll build a webapp that looks like the following (the exac
   * Editing the active file's content.
   * Auto-saving.
 
+## Rules
+
+Look at the subfolders `iteration-xx` for requirements added over the span of time.
+
+The starting requirements described here will be deemed `iteration-00`.
+
+If you're implementing `iteration-xx`, you're only allowed to peek at `iteration-{xx + 1}` to "foresee" the future in a limited way. You're not allowed to peek at further iterations.
+
+Each iteration has a suite of testcases that your app must pass.
+
 ## Related tools & References
 
 * Monaco editor: https://microsoft.github.io/monaco-editor/
