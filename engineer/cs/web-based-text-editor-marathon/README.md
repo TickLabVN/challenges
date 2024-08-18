@@ -4,5 +4,11 @@ This series is designed to be incrementally improved over a time span - thus, th
 
 ## What you will learn
 
+* Learn to build extensible software.
+* Learn to adapt to changing requirements.
+* Learn to benchmark & set observability points.
+* Learn to identify performance bottleneck.
+* Learn to make tradeoffs in software engineering.
+
 ## Starting requirements
 
