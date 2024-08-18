@@ -22,10 +22,10 @@ For the first week you'll build a webapp that looks like the following (the exac
   * Adding/Removing files/folders.
   * Expanding/Collapsing a folder's content.
   * Setting a file as active.
-* Build a file content editor using the [monaco editor](https://microsoft.github.io/monaco-editor/):
-  * Allows showing the active file's content.
-  * Allows editing the active file's content.
-  * Allows auto-saving.
+* Build a file content editor using the [monaco editor](https://microsoft.github.io/monaco-editor/) that allows:
+  * Showing the active file's content.
+  * Editing the active file's content.
+  * Auto-saving.
 
 ## Related tools & References
 
