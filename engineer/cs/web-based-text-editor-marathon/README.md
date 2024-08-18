@@ -26,3 +26,13 @@ For the first week you'll build a webapp that looks like the following (the exac
   * Allows showing the active file's content.
   * Allows editing the active file's content.
   * Allows auto-saving.
+
+## Related tools & References
+
+* Monaco editor: https://microsoft.github.io/monaco-editor/
+* Edge performance devtool
+* OpenTelemetry: https://opentelemetry.io/
+
+## Keywords
+
+Software engineering, Virtual filesystem, Webapp, Text editor, Extensibility, Performance, Observability
