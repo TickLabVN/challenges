@@ -12,3 +12,17 @@ This series is designed to be incrementally improved over a time span - thus, th
 
 ## Starting requirements
 
+The running theme of this series is a web-based text editor built using the [monaco editor](https://microsoft.github.io/monaco-editor/).
+
+For the first week you'll build a webapp that looks like the following (the exact UI is not important):
+
+![image](https://github.com/user-attachments/assets/01b8f28c-edb4-4954-a75e-2f018db7b6ea)
+
+* Build a virtual file explorer that allows:
+  * Adding/Removing files/folders.
+  * Expanding/Collapsing a folder's content.
+  * Setting a file as active.
+* Build a file content editor using the [monaco editor](https://microsoft.github.io/monaco-editor/):
+  * Allows showing the active file's content.
+  * Allows editing the active file's content.
+  * Allows auto-saving.
