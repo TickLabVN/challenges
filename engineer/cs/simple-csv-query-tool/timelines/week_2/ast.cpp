@@ -24,7 +24,7 @@ private:
     std::vector<Expression*> columns;
     std::string from;
     Expression* where;
-    std::vector<Expression*> orderBy;'
+    std::vector<Expression*> orderBy;
 public:
   std::string toString() const {  /* TODO */ }
 };
