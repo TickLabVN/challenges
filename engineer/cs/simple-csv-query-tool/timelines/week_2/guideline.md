@@ -58,24 +58,6 @@ flowchart TD
 ```
 ## Implementation
 ### 1. Define AST data structure
-- **SQL Statement**: Identify and define the different types of SQL statements that the parser will support
-    ```cpp
-    // Base class for SQL Statements
-    class Statement {
-    public:
-        virtual ~Statement() = default;
-        virtual string toString() const = 0;
-    };
-
-    // Class for CREATE statements
-    class Create : public Create {
-    private:
-        std::string name; // table name
-        std::vector<std::string> columns; // table columns
-    };
-    public:
-        string toString() const {
-            // TODO
-        }
-    }
-    ```
+> Check [here](./ast.cpp)
+- **SQL Statement**: Identify and define the different types of SQL statements that the parser will support.
+- 
