@@ -1,5 +1,5 @@
-# Week 2
-This week, our focus will be on understanding how a **SQL parser** works and how it generates an **Abstract Syntax Tree (AST)**.
+# Week 2 + 3
+This week and next, our focus will be on understanding how a **SQL parser** works and how it generates an **Abstract Syntax Tree (AST)**.
 
 ## SQL Parser
 In the previous Lexer phase, we transformed the raw query string into a sequence of tokens. However, having recognized tokens doesn't necessarily ensure that the sequence is a valid and meaningful query. For example: `data.csv SELECT VALUES *` is not a valid query.
@@ -21,15 +21,14 @@ flowchart TD
     Subtract[-] --> Var[z]
     Subtract[-] --> Num[1]
 ```
-In the above AST representation, the nodes + and - are operators, z is a variable, and 1 and 2 are just literals.
-Notice how the parentheses are discarded in the AST; they're subsumed in the representation of (z - 1): z and 1 are both children of the - operator node.
+In the above AST representation, the nodes `+` and `-` are operators, `z` is a variable, and `1` and `2` are just literals. Notice how the parentheses are discarded in the AST; they're subsumed in the representation of `(z - 1)`: `z` and `1` are both children of the `-` operator node.
 
-### Goal
-Example query:
+## Goal
+Example SQL query:
 ```sql
 SELECT id, name FROM users;
 ```
-- Input: token stream
+- **Parser input**: Stream of tokens
   ```cpp
   {
     Token::Keyword(Keyword::Select),
@@ -42,18 +41,19 @@ SELECT id, name FROM users;
     Token::Eof
   }
   ```
-- Output: AST
+- **Parser output**: AST
 ```mermaid
 flowchart TD
-    S[Select Statement]
+    S[Select]
     S --> C[Columns]
     S --> F[From]
     S --> W[Where]
     S --> O[Order By]
 
-    C --> ID[Identifier: id]
-    C --> NAME[Identifier: name]
-    F --> USERS[Table: users]
+    C --> ID[id]
+    C --> NAME[name]
+    F --> USERS[users]
     W --> NONE[None]
     O --> EMPTY[Empty List]
 ```
+## Implementation
