@@ -176,20 +176,44 @@ flowchart TD
     C --> ID[id]
     C --> PRICE[price]
     C --> DISCOUNT[discount]
-    C --> EXPR[(price * discount / 100)]
+    C --> EXPR1[(BinaryOperation)]
+    EXPR1 --> LEFT1[(BinaryOperation)]
+    EXPR1 --> OP1[/Div/]
+    EXPR1 --> RIGHT1[100]
+    LEFT1 --> LEFT2[price]
+    LEFT1 --> OP2[/Mul/]
+    LEFT1 --> RIGHT2[discount]
+    
     F --> PRODUCTS[products]
-    W --> OP1[<=]
-    OP1 --> VAL100[100]
-    OP1 --> PRICE2[price]
-    W --> AND[AND]
-    AND --> OP2[<]
-    OP2 --> PRICE3[price]
-    OP2 --> VAL1000[1000]
-    AND --> OR[OR]
-    OR --> OP3[<]
-    OP3 --> DISCOUNT2[discount]
-    OP3 --> PLUS[+]
-    PLUS --> VAL10[10]
-    PLUS --> NESTED[(2 * 20)]
+
+    W --> OP3[(BinaryOperation)]
+    OP3 --> LEFT3[(BinaryOperation)]
+    OP3 --> OP4[/Or/]
+    OP3 --> RIGHT4[(BinaryOperation)]
+
+    LEFT3 --> LEFT4[(BinaryOperation)]
+    LEFT3 --> OP5[/And/]
+    LEFT3 --> RIGHT5[(BinaryOperation)]
+    
+    LEFT4 --> LEFT5[100]
+    LEFT4 --> OP6[/LtEq/]
+    LEFT4 --> RIGHT6[price]
+
+    RIGHT5 --> LEFT6[price]
+    RIGHT5 --> OP7[/Lt/]
+    RIGHT5 --> RIGHT7[1000]
+
+    RIGHT4 --> LEFT7[discount]
+    RIGHT4 --> OP8[/Lt/]
+    RIGHT4 --> RIGHT8[(BinaryOperation)]
+
+    RIGHT8 --> LEFT8[10]
+    RIGHT8 --> OP9[/Plus/]
+    RIGHT8 --> RIGHT9[(Nested BinaryOperation)]
+
+    RIGHT9 --> LEFT9[2]
+    RIGHT9 --> OP10[/Mul/]
+    RIGHT9 --> RIGHT10[20]
+
     O --> EMPTY[empty array]
 ```
