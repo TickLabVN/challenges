@@ -9,6 +9,13 @@ public:
   virtual std::string toString() const = 0;
 };
 
+// Base class for all expressions
+class Expression {
+public:
+    virtual ~Expression() = default;
+    virtual std::string toString() const = 0;
+};
+
 // Derived class for CREATE statements
 class Create : public Statement {
 private:
@@ -62,6 +69,61 @@ public:
 class Drop : public Statement {
 private:
   std::string name; // table name
+public:
+  std::string toString() const {  /* TODO */ }
+};
+
+// Derived class for identifiers
+class Identifier : public Expression {
+private:
+  std::string ident;
+public:
+  std::string toString() const {  /* TODO */ }
+};
+
+// Derived class for values
+class Value : public Expression {
+private:
+  Type type;
+  std::string str_val;
+  bool bool_val;
+  int64_t num_val;
+public:
+  enum class Type { String, Bool, Number };
+  std::string toString() const {  /* TODO */ }
+}
+
+// Derived class for wildcards
+class Wildcard : public Expression {
+public:
+    std::string toString() const {  /* TODO */ }
+};
+
+// Derived class for binary operations
+class BinaryOperation : public Expression {
+private:
+  Expression* left;
+  BinaryOperator op;
+  Expression* right;
+public:
+  enum class BinaryOperator { Eq, Neq, Lt, LtEq, Gt, GtEq, Plus, Minus, Mul, Div, And, Or };
+  std::string toString() const {  /* TODO */ }
+};
+
+// Derived class for unary operations
+class UnaryOperation : public Expression {
+private:
+  UnaryOperator op;
+  Expression* expr;
+public:
+  enum class Operator { Plus, Minus };
+  std::string toString() const {  /* TODO */ }
+};
+
+// Derived class for nested expressions
+class Nested : public Expression {
+private:
+  Expression* expr;
 public:
   std::string toString() const {  /* TODO */ }
 };
