@@ -280,7 +280,7 @@ Statement::Create {
 
 ```mermaid
 flowchart TD
-    C[Create Table]
+    C[Create]
     C --> N[Name]
     C --> CL[Columns]
 
