@@ -59,5 +59,6 @@ flowchart TD
 ## Implementation
 ### 1. Define AST data structure
 > Check [here](./ast.cpp)
-- **SQL Statement**: Identify and define the different types of SQL statements that the parser will support (`CREATE`, `SELECT`, `DELETE`, `UPDATE`, `INSERT`, `DROP`).
-- **Expression**: Define the possible expressions that can be used in SQL statements.
+- **SQL Statements**: Identify and define the different types of SQL statements that the parser will support. These statement types are derived from the base class `Statement`, include `Create`, `Select`, `Delete`, `Update`, `Insert`, `Drop`.
+- **Expressions**: Define the possible expressions that can be used in SQL statements. These expression types are derived from the base class `Expression`, include `Identifier`, `Value`, `Wildcard` (symbol `*`), `BinaryOperation`, `UnaryOperation`, `Nested`.
+- **Data Types and Constraints**: List all possible SQL data types (`DataType` class) and constraints (`Constraint` enum) that can be applied to columns in SQL statements.
