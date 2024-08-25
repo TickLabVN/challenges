@@ -268,6 +268,6 @@ SELECT * FROM ^ WHERE unsupported = 1;
 Err({
     ErrorKind::UnexpectedOrUnsupportedToken('^'),
     Location{1, 15},
-    "SELECT * FROM table WHERE ^ unsupported = 1;"
+    "SELECT * FROM ^ WHERE unsupported = 1;"
 })
 ```
