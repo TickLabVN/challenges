@@ -221,3 +221,80 @@ flowchart TD
 
     O --> EMPTY[empty array]
 ```
+
+### 5. Parse Select Statement with Order By
+
+```sql
+SELECT name, email FROM users ORDER BY email;
+```
+
+```cpp
+Statement::Select {
+    columns: [
+        Expression::Identifier("name"),
+        Expression::Identifier("email")
+    ],
+    from: "users",
+    where: nullptr,
+    order_by: [
+        Expression::Identifier("email")
+    ]
+}
+```
+
+```mermaid
+flowchart TD
+    S[Select]
+    S --> C[Columns]
+    S --> F[From]
+    S --> W[Where]
+    S --> O[Order By]
+
+    C --> NAME[name]
+    C --> EMAIL[email]
+    F --> USERS[users]
+    W --> NONE[null]
+    O --> EMAIL_ORDER[email]
+```
+
+### 6. Parse CREATE TABLE Statement
+
+```sql
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255) UNIQUE
+);
+```
+
+```cpp
+Statement::Create {
+    name: "users",
+    columns: [
+        Column::primaryKey("id", DataType::Int),
+        Column::newColumn("name", DataType::Varchar(255)),
+        Column::unique("email", DataType::Varchar(255))
+    ]
+}
+```
+
+```mermaid
+flowchart TD
+    C[Create Table]
+    C --> N[Name]
+    C --> CL[Columns]
+
+    N --> USERS[users]
+    
+    CL --> ID[id]
+    CL --> NAME[name]
+    CL --> EMAIL[email]
+
+    ID --> INT[Int]
+    ID --> PK[PrimaryKey]
+
+    NAME --> VARCHAR1["Varchar(255)"]
+    
+    EMAIL --> VARCHAR2["Varchar(255)"]
+    EMAIL --> UNIQUE[Unique]
+```
