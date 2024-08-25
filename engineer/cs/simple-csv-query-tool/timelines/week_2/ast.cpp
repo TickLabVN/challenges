@@ -16,6 +16,12 @@ public:
     virtual std::string toString() const = 0;
 };
 
+// Enum class for SQL binary operators
+enum class BinaryOperator { Eq, Neq, Lt, LtEq, Gt, GtEq, Plus, Minus, Mul, Div, And, Or };
+
+// Enum class for SQL unary operators
+enum class UnaryOperator { Plus, Minus };
+
 // Enum class for SQL constraints
 enum class Constraint {
     PrimaryKey,
@@ -135,7 +141,6 @@ private:
   BinaryOperator op;
   Expression* right;
 public:
-  enum class BinaryOperator { Eq, Neq, Lt, LtEq, Gt, GtEq, Plus, Minus, Mul, Div, And, Or };
   std::string toString() const {  /* TODO */ }
 };
 
@@ -145,7 +150,6 @@ private:
   UnaryOperator op;
   Expression* expr;
 public:
-  enum class UnaryOperator { Plus, Minus };
   std::string toString() const {  /* TODO */ }
 };
 
