@@ -92,6 +92,14 @@ private:
   std::string name;                      // The name of the column
   DataType dataType;                     // The data type of the column
   std::vector<Constraint*> constraints;  // Constraints on the column
+  Column(const std::string& name, DataType dataType, std::vector<Constraint*> constraints);
+public:
+  // Static method to create a new Column without constraints
+  static Column newColumn(const std::string& name, DataType dataType);
+  // Static method to create a Column with PrimaryKey constraint
+  static Column primaryKey(const std::string& name, DataType dataType);
+  // Static method to create a Column with Unique constraint
+  static Column unique(const std::string& name, DataType dataType);
 };
 
 // Derived class for identifiers
