@@ -649,29 +649,42 @@ flowchart TD
     OP4[(BinaryOperation)]
     OP5[(BinaryOperation)]
 
-    OP1 --> LEFT1[price]
-    OP1 --> OP2["/"]
-    OP1 --> RIGHT1[discount]
-    
-    OP2 --> LEFT2[(BinaryOperation)]
-    OP2 --> RIGHT2[100]
-    
-    LEFT2 --> LEFT3[price]
-    LEFT2 --> OP3[*]
-    LEFT2 --> RIGHT3[discount]
-    
-    OP3 --> LEFT4[20]
-    OP3 --> OP4[*]
-    OP3 --> RIGHT4[30]
-    
-    OP4 --> LEFT5[10]
-    OP4 --> OP5[+]
-    OP4 --> RIGHT5[(BinaryOperation)]
-    
-    RIGHT5 --> LEFT6[20]
-    RIGHT5 --> OP6[*]
-    RIGHT5 --> RIGHT6[30]
-
+    OP1 --> LEFT1[(BinaryOperation)]
     OP1 --> OP5[<]
-    OP5 --> RIGHT7[10]
+    OP1 --> RIGHT1[(BinaryOperation)]
+
+    LEFT1 --> LEFT2[price]
+    LEFT1 --> OP2["/"]
+    LEFT1 --> RIGHT2[discount]
+    
+    OP2 --> LEFT3[price]
+    OP2 --> OP3[*]
+    OP2 --> RIGHT3[discount]
+
+    RIGHT1 --> LEFT4[10]
+    RIGHT1 --> OP4[+]
+    RIGHT1 --> RIGHT4[(BinaryOperation)]
+    
+    RIGHT4 --> LEFT5[20]
+    RIGHT4 --> OP6[*]
+    RIGHT4 --> RIGHT5[30]
+
+    OP3 --> LEFT6[20]
+    OP3 --> OP7[*]
+    OP3 --> RIGHT6[30]
+    
+    OP4 --> LEFT7[10]
+    OP4 --> OP8[+]
+    OP4 --> RIGHT7[(BinaryOperation)]
+    
+    OP5 --> LEFT8[(BinaryOperation)]
+    OP5 --> RIGHT8[100]
+
+    LEFT8 --> LEFT9[price]
+    LEFT8 --> OP9[*]
+    LEFT8 --> RIGHT9[discount]
+    
+    RIGHT9 --> LEFT10[20]
+    RIGHT9 --> OP10[*]
+    RIGHT9 --> RIGHT10[30]
 ```
