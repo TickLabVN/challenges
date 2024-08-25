@@ -78,4 +78,38 @@ public:
     ...
 };
 ```
+Define a struct for `ParseResult` which can either hold a result or a `ParserError`
+```cpp
+template <typename T>
+struct ParseResult {
+    bool success;          // Flag indicating if the parsing was successful
+    T result;              // Holds the result if successful
+    ParserError error;     // Holds the error details if unsuccessful
+}
+```
 
+### 3. Handle Errors
+Create a custom error class for handling parsing errors.
+```cpp
+// Define a type for error kinds
+enum class ErrorKind {
+    TokenizerError,
+    Expected,
+    ExpectedOneOf,
+    UnexpectedOrUnsupported,
+    UnexpectedEof,
+    IntegerOutOfRange,
+    Other
+};
+
+// Define a class for ParserError
+class ParserError {
+public:
+    ErrorKind kind;
+    Location location; // Location class from Lexer phase
+    std::string input;
+}
+```
+
+### 4. Testing
+Please check some testcases in [sample testcase](./testcase.md).
