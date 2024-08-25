@@ -98,10 +98,14 @@ flowchart TD
     C --> ID[id]
     C --> PRICE[price]
     C --> DISCOUNT[discount]
+    
     F --> PRODUCTS[products]
-    W --> OP[>=]
-    OP --> PRICE2[price]
-    OP --> NUM[100]
+
+    W --> EXPR1[(BinaryOperation)]
+    EXPR1 --> LEFT[price]
+    EXPR1 --> OP[/GtEq/]
+    EXPR1 --> RIGHT[100]
+
     O --> EMPTY[empty array]
 ```
 
