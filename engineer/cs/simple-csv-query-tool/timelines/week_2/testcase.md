@@ -298,3 +298,106 @@ flowchart TD
     EMAIL --> VARCHAR2["Varchar(255)"]
     EMAIL --> UNIQUE[Unique]
 ```
+
+### 7. Parse Simple UPDATE Statement
+
+```sql
+UPDATE users SET is_admin = 1;
+```
+
+```cpp
+Statement::Update {
+    table: "users",
+    columns: [
+        Assignment {
+            identifier: "is_admin",
+            value: Expression::Value(Value::Number(1)),
+        }
+    ],
+    where: nullptr,
+}
+```
+
+```mermaid
+flowchart TD
+    U[Update]
+    U --> T[Table]
+    U --> C[Columns]
+    U --> W[Where]
+
+    T --> USERS[users]
+
+    C --> ASSIGN[Assignment]
+    ASSIGN --> ID[is_admin]
+    ASSIGN --> VAL[1]
+
+    W --> NONE[null]
+```
+
+### 8. Parse UPDATE Statement with WHERE Clause
+
+```sql
+UPDATE products
+SET price = price - 10, discount = 15, stock = 10
+WHERE price > 100;
+```
+
+```cpp
+Statement::Update {
+    table: "products",
+    columns: [
+        Assignment {
+            identifier: "price",
+            value: Expression::BinaryOperation {
+                left: Expression::Identifier("price"),
+                op: BinaryOperator::Minus,
+                right: Expression::Value(Value::Number(10)),
+            }
+        },
+        Assignment {
+            identifier: "discount",
+            value: Expression::Value(Value::Number(15))
+        },
+        Assignment {
+            identifier: "stock",
+            value: Expression::Value(Value::Number(10))
+        }
+    ],
+    where: Expression::BinaryOperation {
+        left: Expression::Identifier("price"),
+        op: BinaryOperator::Gt,
+        right: Expression::Value(Value::Number(100)),
+    }
+}
+```
+
+```mermaid
+flowchart TD
+    U[Update]
+    U --> T[Table]
+    U --> C[Columns]
+    U --> W[Where]
+
+    T --> PRODUCTS[products]
+
+    C --> ASSIGN1[Assignment]
+    C --> ASSIGN2[Assignment]
+    C --> ASSIGN3[Assignment]
+
+    ASSIGN1 --> PRICE[price]
+    ASSIGN1 --> VALUE1[(BinaryOperation)]
+    VALUE1 --> LEFT1[price]
+    VALUE1 --> OP1[-]
+    VALUE1 --> RIGHT1[10]
+
+    ASSIGN2 --> DISCOUNT[discount]
+    ASSIGN2 --> VALUE2[15]
+
+    ASSIGN3 --> STOCK[stock]
+    ASSIGN3 --> VALUE3[10]
+
+    W --> EXPR1[(BinaryOperation)]
+    EXPR1 --> LEFT2[price]
+    EXPR1 --> OP2[>]
+    EXPR1 --> RIGHT2[100]
+```
