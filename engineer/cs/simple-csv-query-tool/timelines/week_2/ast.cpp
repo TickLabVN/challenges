@@ -155,7 +155,5 @@ private:
   Type type;
   size_t size; // Used for VARCHAR, example: VARCHAR(50), VARCHAR(100), VARCHAR(255)
 public:
-  enum class Type {
-      Int, UnsignedInt, BigInt, UnsignedBigInt, Bool, Varchar
-  };
+  enum class Type { Int, Bool, Varchar };
 };
