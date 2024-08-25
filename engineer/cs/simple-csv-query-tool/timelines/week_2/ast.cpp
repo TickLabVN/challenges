@@ -16,6 +16,12 @@ public:
     virtual std::string toString() const = 0;
 };
 
+// Enum class for SQL constraints
+enum class Constraint {
+    PrimaryKey,
+    Unique
+};
+
 // Derived class for CREATE statements
 class Create : public Statement {
 private:
@@ -73,6 +79,21 @@ public:
   std::string toString() const {  /* TODO */ }
 };
 
+// Class to represent an Assignment in SQL
+class Assignment {
+private:
+  std::string identifier;  // The column name or identifier
+  Expression* value;       // The expression assigned to the column
+};
+
+// Class to represent a Column in SQL
+class Column {
+private:
+  std::string name;                      // The name of the column
+  DataType dataType;                     // The data type of the column
+  std::vector<Constraint*> constraints;  // Constraints on the column
+};
+
 // Derived class for identifiers
 class Identifier : public Expression {
 private:
@@ -116,7 +137,7 @@ private:
   UnaryOperator op;
   Expression* expr;
 public:
-  enum class Operator { Plus, Minus };
+  enum class UnaryOperator { Plus, Minus };
   std::string toString() const {  /* TODO */ }
 };
 
@@ -126,4 +147,15 @@ private:
   Expression* expr;
 public:
   std::string toString() const {  /* TODO */ }
+};
+
+// Class for SQL data types
+class DataType {
+private:
+  Type type;
+  size_t size; // Used for VARCHAR, example: VARCHAR(50), VARCHAR(100), VARCHAR(255)
+public:
+  enum class Type {
+      Int, UnsignedInt, BigInt, UnsignedBigInt, Bool, Varchar
+  };
 };
