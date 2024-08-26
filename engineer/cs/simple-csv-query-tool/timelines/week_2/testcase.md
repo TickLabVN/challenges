@@ -152,9 +152,25 @@ CREATE TABLE users (
 Statement::Create {
     name: "users",
     columns: [
-        Column::primaryKey("id", DataType::Int),
-        Column::newColumn("name", DataType::Varchar(255)),
-        Column::unique("email", DataType::Varchar(255))
+        Column {
+            name: "id",
+            dataType: DataType::Int,
+            constraints: [
+                Constraint::PrimaryKey
+            ]
+        },
+        Column {
+            name: "name",
+            dataType: DataType::Varchar(255),
+            constraints: []
+        },
+        Column {
+            name: "email",
+            dataType: DataType::Varchar(255),
+            constraints: [
+                Constraint::Unique
+            ]
+        }
     ]
 }
 ```
