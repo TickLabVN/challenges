@@ -472,14 +472,14 @@ SELECT * FROM users
 ```
 
 ```cpp
-Err(ParserError {
+ParserError {
     kind: ErrorKind::Expected {
         expected: Token::SemiColon,
         found: Token::Eof
     },
     location: Location { line: 1, col: 20 },
     input: "SELECT * FROM users",
-})
+}
 ```
 
 ### 20. Parse Partial SELECT Statement
@@ -489,7 +489,7 @@ SELECT
 ```
 
 ```cpp
-Err(ParserError {
+ParserError {
     kind: ErrorKind::ExpectedOneOf {
         expected: std::vector<Token>{
             Token::Identifier(""),
@@ -504,7 +504,7 @@ Err(ParserError {
     },
     location: Location { line: 1, col: 7 },
     input: "SELECT"
-})
+}
 ```
 
 ### 21. Parse Partial UPDATE Statement
@@ -514,14 +514,14 @@ UPDATE
 ```
 
 ```cpp
-Err(ParserError {
+ParserError {
     kind: ErrorKind::Expected {
         expected: Token::Identifier(""),
         found: Token::Eof
     },
     location: Location { line: 1, col: 7 },
     input: "UPDATE",
-})
+}
 ```
 
 ### 22. Parse Unexpected Initial Token
@@ -531,7 +531,7 @@ Err(ParserError {
 ```
 
 ```cpp
-Err(ParserError {
+ParserError {
     kind: ErrorKind::ExpectedOneOf {
         expected: std::vector<Token>{
             Token::Keyword(Keyword::Select),
@@ -545,7 +545,7 @@ Err(ParserError {
     },
     location: Location { line: 1, col: 1 },
     input: "/ SELECT * FROM users;",
-})
+}
 ```
 
 ### 23. Parse Unexpected Initial Keyword
@@ -555,7 +555,7 @@ VARCHAR * FROM users;
 ```
 
 ```cpp
-Err(ParserError {
+ParserError {
     kind: ErrorKind::ExpectedOneOf {
         expected: std::vector<Token>{
             Token::Keyword(Keyword::Select),
@@ -569,7 +569,7 @@ Err(ParserError {
     },
     location: Location { line: 1, col: 1 },
     input: "VARCHAR * FROM users;",
-})
+}
 ```
 
 ### 24. Parse Unexpected Expression Token
@@ -579,7 +579,7 @@ SELECT ) FROM table;
 ```
 
 ```cpp
-Err(ParserError {
+ParserError {
     kind: ErrorKind::ExpectedOneOf {
         expected: std::vector<Token>{
             Token::Identifier(""),
@@ -594,7 +594,7 @@ Err(ParserError {
     },
     location: Location { line: 1, col: 8 },
     input: "SELECT ) FROM table;",
-})
+}
 ```
 
 ### 25. Parse Unexpected Keyword
@@ -604,14 +604,14 @@ SELECT * VALUES users
 ```
 
 ```cpp
-Err(ParserError {
+ParserError {
     kind: ErrorKind::Expected {
         expected: Token::Keyword(Keyword::From),
         found: Token::Keyword(Keyword::Values),
     },
     location: Location { line: 1, col: 10 },
     input: "SELECT * VALUES users",
-})
+}
 ```
 
 ### 26. Parse Unexpected Keyword
@@ -621,14 +621,14 @@ DROP VALUES test
 ```
 
 ```cpp
-Err(ParserError {
+ParserError {
     kind: ErrorKind::Expected {
         expected: Token::Keyword(Keyword::Table),
         found: Token::Keyword(Keyword::Values),
     },
     location: Location { line: 1, col: 6 },
     input: "DROP VALUES test",
-})
+}
 ```
 
 ### 27. Parse Unexpected Data Type
@@ -638,7 +638,7 @@ CREATE TABLE test (id INCORRECT);
 ```
 
 ```cpp
-Err(ParserError {
+ParserError {
     kind: ErrorKind::ExpectedOneOf {
         expected: std::vector<Token>{
             Token::Keyword(Keyword::Int),
@@ -649,7 +649,7 @@ Err(ParserError {
     },
     location: Location { line: 1, col: 23 },
     input: "CREATE TABLE test (id INCORRECT);",
-})
+}
 ```
 
 ### 28. Parse Unexpected Identifier
@@ -659,14 +659,14 @@ INSERT INTO 1 VALUES (2);
 ```
 
 ```cpp
-Err(ParserError {
+ParserError {
     kind: ErrorKind::Expected {
         expected: Token::Identifier(""),
         found: Token::Number(1),
     },
     location: Location { line: 1, col: 13 },
     input: "INSERT INTO 1 VALUES (2);",
-})
+}
 ```
 
 ### 29. Parse Unexpected Varchar Length
@@ -676,14 +676,14 @@ CREATE TABLE test (name VARCHAR(test));
 ```
 
 ```cpp
-Err(ParserError {
+ParserError {
     kind: ErrorKind::Expected {
         expected: Token::Number(0),
         found: Token::Identifier("test"),
     },
     location: Location { line: 1, col: 33 },
     input: "CREATE TABLE test (name VARCHAR(test));",
-})
+}
 ```
 
 ### 30. Parse Required Parenthesis
@@ -693,12 +693,12 @@ CREATE TABLE users id INT PRIMARY KEY, name VARCHAR(255);
 ```
 
 ```cpp
-Err(ParserError {
+ParserError {
     kind: ErrorKind::Expected {
         expected: Token::LeftParen,
         found: Token::Identifier("id"),
     },
     location: Location { line: 1, col: 20 },
     input: "CREATE TABLE users id INT PRIMARY KEY, name VARCHAR(255);",
-})
+}
 ```
