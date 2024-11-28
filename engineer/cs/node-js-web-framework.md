@@ -33,4 +33,4 @@ This project focuses on building a lightweight Node.js web framework like Expres
 * Node.js HTTP API: https://nodejs.org/api/http.html
 * Express.js API: https://expressjs.com/en/5x/api.html
 * HTTP MDN: https://developer.mozilla.org/en-US/docs/Web/HTTP
-* HTTP RFC: https://datatracker.ietf.org/doc/html/rfc7231
+* HTTP RFC: https://www.rfc-editor.org/rfc/rfc9112.html
